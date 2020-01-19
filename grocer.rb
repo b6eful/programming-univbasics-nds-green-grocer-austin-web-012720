@@ -13,6 +13,11 @@ def consolidate_cart(cart)
   carts = []
   while n < cart.length do
     cartitem = find_item_by_name_in_collection(cart[i][:item], new_cart)
+    if new_cart_item
+      new_cart_item[:count] += 1
+    else
+      new_cart_item = {
+        :item 
 end
 
 def apply_coupons(cart, coupons)
