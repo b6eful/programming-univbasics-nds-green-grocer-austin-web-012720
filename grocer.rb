@@ -29,15 +29,34 @@ end
   new_cart
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+ i = 0 
+  while i < coupons.length do
+    cart_item = find_item_by_name_in_collection(coupons[i][:item], cart)
+    item_name_with_coupon = "#{coupons[i][:item]} W/COUPON"
+    cart_item_with_coupon = find_item_by_name_in_collection(item_name_with_coupon, cart)
+
+    if cart_item && cart_item[:count] >= coupons[i][:num]
+      if cart_item_with_coupon
+       cart_item_with_coupon[:count] += coupons[i][:num]
+       cart_item[:count] -= coupons[i][:num]
+     else
+      cart_item_with_coupon = {
+        :item => item_name_with_coupon,
+        :price => coupons[i][:cost] / coupons[i][:num],
+        :clearance => cart_item[:clearance],
+        :count => coupons[i][:num]
+      }
+      cart << cart_item_with_coupon
+      cart_item[:count] -= coupons[i][:num]
+    end
+  end
+  i += 1 
+end
+cart 
 end
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+
 end
 
 def checkout(cart, coupons)
