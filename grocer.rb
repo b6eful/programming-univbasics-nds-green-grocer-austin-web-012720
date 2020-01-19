@@ -23,7 +23,10 @@ def consolidate_cart(cart)
         :count => 1 
       }
       carts << cartitem
+    end
+    n += 1
 end
+  new_cart
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
