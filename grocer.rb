@@ -10,8 +10,9 @@ end
 
 def consolidate_cart(cart)
   n = 0
-  cart = []
-  while n < car
+  carts = []
+  while n < cart.length do
+    new_cart_item = find_item_by_name_in_collection
 end
 
 def apply_coupons(cart, coupons)
